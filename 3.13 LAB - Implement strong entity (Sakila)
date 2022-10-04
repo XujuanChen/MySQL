@@ -28,3 +28,18 @@ Apply these constraints:
 NOT NULL constraints correspond to cardinalities on the diagram above.
 Foreign key actions are SET NULL for delete rules and CASCADE for update rules.
 Specify a suitable column as the phone table primary key.
+
+
+
+
+Solution:
+
+ALTER TABLE address DROP COLUMN phone;
+
+CREATE TABLE phone ( phone_id INT PRIMARY KEY, country_code INT NOT NULL, phone_number INT NOT NULL, phone_type VARCHAR(12) CHECK (phone_type IN ('Home', 'Mobile', 'Other')) );
+
+ALTER TABLE store ADD COLUMN phone_id INT; ALTER TABLE store ADD FOREIGN KEY (phone_id) REFERENCES phone(phone_id) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE customer ADD COLUMN phone_id INT; ALTER TABLE customer ADD FOREIGN KEY (phone_id) REFERENCES phone(phone_id) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE staff ADD COLUMN phone_id INT; ALTER TABLE staff ADD FOREIGN KEY (phone_id) REFERENCES phone(phone_id) ON DELETE SET NULL ON UPDATE CASCADE;
