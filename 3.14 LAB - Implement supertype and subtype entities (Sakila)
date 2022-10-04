@@ -3,51 +3,30 @@
 SOLUTION:
 
 CREATE TABLE person (
-
    person_id SMALLINT UNSIGNED PRIMARY KEY,
-   
    first_name VARCHAR(20) NOT NULL,
-   
    last_name VARCHAR(20) NOT NULL,
-   
    email VARCHAR(20) NOT NULL,
-   
    address_id SMALLINT UNSIGNED NOT NULL,
-   
    active VARCHAR(20) NOT NULL,
-   
    last_update TIMESTAMP NOT NULL,
-   
    FOREIGN KEY (address_id) REFERENCES address(address_id) ON UPDATE RESTRICT ON DELETE RESTRICT
-   
 );
 
 
 CREATE TABLE staff (
-
-   person_id SMALLINT UNSIGNED PRIMARY KEY,
-   
-   picture BLOB NOT NULL,
-   
-   username VARCHAR(20) NOT NULL,
-   
-   password VARCHAR(20) NOT NULL,
-   
-   store_id TINYINT UNSIGNED NOT NULL,
-   
-   FOREIGN KEY (store_id) REFERENCES store(store_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
-   
+   person_id SMALLINT UNSIGNED PRIMARY KEY,   
+   picture BLOB NOT NULL,   
+   username VARCHAR(20) NOT NULL,   
+   password VARCHAR(20) NOT NULL,  
+   store_id TINYINT UNSIGNED NOT NULL,  
+   FOREIGN KEY (store_id) REFERENCES store(store_id) ON UPDATE RESTRICT ON DELETE RESTRICT,  
    FOREIGN KEY (person_id) REFERENCES person(person_id) ON UPDATE CASCADE ON DELETE CASCADE
-   
 );
 
 
 CREATE TABLE customer (
-
    person_id SMALLINT UNSIGNED PRIMARY KEY,
-   
    create_date TIMESTAMP NOT NULL,
-   
    FOREIGN KEY (person_id) REFERENCES person(person_id) ON UPDATE CASCADE ON DELETE CASCADE
-   
 );
