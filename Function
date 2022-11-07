@@ -1,0 +1,17 @@
+# SQL
+
+# MIN()
+# SELECT MIN(col_name) FROM table_name;
+
+# MAX()
+# SELECT MAX(col_name) FROM table_name;
+
+# COUNT()
+# SELECT COUNT(*) FROM table_name WHERE condition;
+
+# SUM()
+# SELECT SUM(col_name) FROM table_name;
+
+# AVG()
+# SELECT AVG(col_name) FROM table_name;
+
