@@ -15,3 +15,10 @@
 # AVG()
 # SELECT AVG(col_name) FROM table_name;
 
+# String Functions
+
+# LTRIM() -- Removes blanks on the left side of the character expression
+# LOWER() -- Converts all characters to lower case letters
+# UPPER() -- Converts all characters to upper case letters
+# REVERSE() -- Reverse all the charaters in the string
+# SUBSTRING() -- Gives a substring from the original string.
