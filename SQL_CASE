@@ -19,7 +19,7 @@ select Numero = case when @numero = 1 then 10
                 
                 
 @ - local variable
-@ - global variable
+@@ - global variable
                                             
                                             
 SELECT OrderID, Quantity,
