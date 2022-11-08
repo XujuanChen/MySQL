@@ -1,0 +1,70 @@
+# 4 different ways of creating Primary Keys
+# 1. Define Primary Key at the column definition level
+CREATE TABLE dbo.test1(
+  col1 int NOT NULL PRIMARY KEY,
+  col2 char(8) NOT NULL
+)
+GO
+
+# 2. Define Primary Key at the end of the table create statement
+CREATE TABLE dbo.test2 (
+  col1 int NOT NULL,
+  col2 char(8) NOT NULL,
+  PRIMARY KEY (col1)
+)
+GO
+
+# 3. Define Primary Key at the end of the table create statement
+CREATE TABLE dbo.test3 (
+  col1 int NOT NULL,
+  col2 char(8) NOT NULL,
+  CONSTRAINT pk_test3 PRIMARY KEY (col1)
+)
+GO
+
+# 4. Create the table first, Define Primary Key with Alter Table Statement
+CREATE TABLE dbo.test4 (
+  col1 int NOT NULL,
+  col2 char(8) NOT NULL
+)
+GO
+
+ALTER TABLE dbo.test4 
+ADD CONSTRAINT pk_test4 PRIMARY KEY CLUSTERED (col1)
+GO
+
+
+
+# 4 ways of creating Foreign Key
+# 1. Define Foreign Key at the column definition level
+CREATE TABLE dbo.test5 (
+  col1 int NOT NULL FOREIGN KEY REFERENCES dbo.test1 (col1),
+  col2 char(8) NOT NULL
+)
+GO
+
+# 2. Define Foreign Key at the end of the table create statement
+CREATE TABLE dbo.test6 (
+  col1 int NOT NULL,
+  col2 char(8) NOT NULL,
+  FOREIGN KEY (col1) REFERENCES dbo.test1 (col1)
+)
+GO
+
+# 3. Define Foreign Key at the end of the table create statement
+CREATE TABLE dbo.test7 (
+  col1 int NOT NULL,
+  col2 char(8) NOT NULL,
+  CONSTRAINT fk_test7 FOREIGN KEY (col1) REFERENCES dbo.test1 (col1)
+)
+GO
+
+# 4. Create table first, define Foreign Key with Alter Table Statement
+CREATE TABLE dbo.test8 (
+  col1 int NOT NULL,
+  col2 char(8) NOT NULL,
+)
+GO
+
+ALTER TABLE dbo.test8
+ADD CONSTRAINT fk_test8 FOREIGN KEY (col1) REFERENCES dbo.test1 (col1)
